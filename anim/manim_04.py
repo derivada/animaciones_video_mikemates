@@ -32,10 +32,9 @@ class manim_04(MovingCameraScene):
                               FadeIn(alg_text_4, run_time = 1.7),
                               lag_ratio = 1)
         anim_2 = AnimationGroup(FadeIn(dummy, run_time = 4.5),
+                                DrawBorderThenFill(alg_text_5, run_time = 1.5),
                                 FadeIn(alg_text_6, run_time = 1.2), 
                                 lag_ratio = 1.5)
-        anim_3 = AnimationGroup(FadeIn(dummy, run_time = 4),
-                                DrawBorderThenFill(alg_text_5, run_time = 5))
-        self.play(Restore(self.camera.frame, run_time = 10), anim, anim_2, anim_3)
+        self.play(Restore(self.camera.frame, run_time = 10), anim, anim_2)
         self.wait(2)
         self.play(self.camera.frame.animate.set(width = 0.8), FadeOut(circle), FadeOut(sq), run_time = 1)
