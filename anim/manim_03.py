@@ -11,7 +11,7 @@ fs = 32
 
 # Sección 3.1
 class manim_03(Scene):
-    def trazar_arco(self, center: Dot, arc : Arc, angle, run_time = 2.0, show_vect = True):
+    def trazar_arco_2puntos(self, center: Dot, arc : Arc, angle, run_time = 2.0, show_vect = True):
         orig_color = center.get_color()
         if(show_vect):
             vect = Arrow(start = center.get_center(), end = arc.get_start(), buff = 0, color = aux_color, 
@@ -56,7 +56,7 @@ class manim_03(Scene):
         pF = Dot([rect_w /2 + rect_h, rect_h/2, 0.0], color = point_color, stroke_width = point_thick)
         pF_label = Tex("F", font_size = fs).next_to(pF, DR / 2)
         arc_df = ArcBetweenPoints(pD.get_center(), pF.get_center(), stroke_width = arc_thick, stroke_color = arc_color, stroke_opacity = arc_alpha)
-        self.trazar_arco(pE, arc_df, PI/2)
+        self.trazar_arco_2puntos(pE, arc_df, PI/2)
         self.play(FadeIn(pF), FadeIn(pF_label))
         removeGroup.add(pF, pF_label, arc_df)
         self.wait(3)
@@ -69,10 +69,10 @@ class manim_03(Scene):
         midline = DashedLine(start = [rect_h/2, rect_w + rect_h + 0.5, 0.0], end = [rect_h/2, - rect_w - rect_h - 0.5, 0.0], color = aux_color, stroke_width = aux_thick) 
         pG = Dot([rect_h/2, rect_h/2, 0.0], color = point_color, stroke_width = point_thick)
         pG_label = Tex("G", font_size = fs).next_to(pG, UP / 2)
-        self.trazar_arco(pB, arc_bf_up, -aux_arc_len, run_time = 1.0)
-        self.trazar_arco(pB, arc_bf_down, -aux_arc_len, run_time = 1.0)
-        self.trazar_arco(pF, arc_fb_up, aux_arc_len, run_time = 1.0)
-        self.trazar_arco(pF, arc_fb_down, aux_arc_len, run_time = 1.0)
+        self.trazar_arco_2puntos(pB, arc_bf_up, -aux_arc_len, run_time = 1.0)
+        self.trazar_arco_2puntos(pB, arc_bf_down, -aux_arc_len, run_time = 1.0)
+        self.trazar_arco_2puntos(pF, arc_fb_up, aux_arc_len, run_time = 1.0)
+        self.trazar_arco_2puntos(pF, arc_fb_down, aux_arc_len, run_time = 1.0)
         self.wait(1)
         self.play(AnimationGroup(Create(midline), FadeIn(pG), FadeIn(pG_label), lag_ratio = 1))
         self.play(FadeOut(arc_bf_up), FadeOut(arc_bf_down), FadeOut(arc_fb_up), FadeOut(arc_fb_down), FadeOut(midline)) # quitar clutter
@@ -85,7 +85,7 @@ class manim_03(Scene):
         pH = Dot([rect_w/2, rect_h/2 + sq_size, 0.0], color = point_color, stroke_width = point_thick)
         pH_label = Tex("H", font_size = fs).next_to(pH, UP / 2)
         eh = Line(pE.get_center(), pH.get_center(), color = cuad_color, stroke_width = cuad_thick)
-        self.trazar_arco(pG, circle, 2*PI)
+        self.trazar_arco_2puntos(pG, circle, 2*PI)
         self.play(Create(eh)) 
         self.bring_to_back(eh) # maybe needs fix
         self.play(FadeIn(pH), FadeIn(pH_label))
