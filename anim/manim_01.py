@@ -1,13 +1,13 @@
 from manim import *
 from numpy import *
 
+circle_color = BLUE
+sq_color = RED
+fs = 40
+
 # Sección 2.3
 class manim_01(Scene):
     def construct(self):
-        circle_color = GREEN
-        sq_color = RED
-        fs = 40 # font size
-
         circle = Circle(radius = 1.0, color = circle_color)
         self.play(Create(circle))
         self.wait(1)
