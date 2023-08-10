@@ -9,7 +9,7 @@ color_A, color_B, color_AB = BLUE, RED, PURPLE
 class manim_08(Scene):
     def construct(self):        
         # puntos A y B
-        # angulo = 45º, A = 3, B = 2, base_len = 2
+        # angulo = 45º, A = 3, B = 2
         mostrar_grid(self)
         pA_coords, pB_coords, pAB_coords, p1_coords = [3.0, 0.0, 0.0], [sqrt(2), sqrt(2), 0.0], [6.0, 0.0, 0.0], [sqrt(2)/2, sqrt(2)/2, 0.0]
         p0, p1, pA, pB, pAB = Dot(ORIGIN), Dot(p1_coords), Dot(pA_coords, color = color_A), Dot(pB_coords, color = color_B), Dot(pAB_coords, color = color_AB)
