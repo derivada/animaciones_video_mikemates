@@ -5,7 +5,7 @@ circle_color, circle_thick = GREEN, DEFAULT_STROKE_WIDTH * 1.5
 sq_color, sq_thick, sq_fill = BLUE, DEFAULT_STROKE_WIDTH * 1.2, BLUE_B
 fs = 40
 
-# Sección 3.1
+# Sección 3.7
 class manim_04(MovingCameraScene):
     def construct(self):
         fs = 40 # font size

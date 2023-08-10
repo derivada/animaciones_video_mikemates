@@ -9,7 +9,7 @@ point_color, point_thick = WHITE, DEFAULT_STROKE_WIDTH * 0.6
 cuad_color, cuad_color_highlight, cuad_thick, cuad_fill, cuad_fill_opacity = YELLOW, WHITE, DEFAULT_STROKE_WIDTH * 1.2, YELLOW_D, 0.5
 fs = 32
 
-# Sección 3.1
+# Sección 3.4
 class manim_03(Scene):
     def trazar_arco_2puntos(self, center: Dot, arc : Arc, angle, run_time = 2.0, show_vect = True):
         orig_color = center.get_color()

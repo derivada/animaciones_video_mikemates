@@ -5,7 +5,7 @@ from utils import trazar_arco
 aux_thick, aux_arc_len = DEFAULT_STROKE_WIDTH * 0.6, PI/16
 fs = 40
 
-# Sección 3.1
+# Sección 4.2
 class manim_05(Scene):
     def construct(self):
         # compilar con --save-sections para generar vídeos separados para cada sección

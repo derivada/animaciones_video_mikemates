@@ -6,7 +6,7 @@ point_color = BLUE
 arc_thick, arc_opacity, arc_color = DEFAULT_STROKE_WIDTH * 0.8, 0.6, BLUE
 fs = 36
 
-# Sección 3.1
+# Sección 4.4
 class manim_06(Scene):
     def construct(self):        
         # puntos A y B
