@@ -11,15 +11,15 @@ class manim_05(Scene):
     def trazar_arco(self, arc: Arc, run_time = 2.0, show_vect = True):
         center, radius, start_angle, angle, color = arc.arc_center, arc.radius, arc.start_angle, arc.angle, arc.color
         if(show_vect):
-            vect = Arrow(start = center, end = center + [cos(start_angle) * radius, sin(start_angle) * radius, 0.0], buff = 0, color = color, 
-                         stroke_width = aux_thick, max_tip_length_to_length_ratio = 0.05, tip_shape = StealthTip, stroke_opacity = 0.5) 
+            vect = Arrow(start = center, end = [center[0] + cos(start_angle) * radius, center[1] + sin(start_angle) * radius, center[2]], buff = 0, color = color, 
+                        max_tip_length_to_length_ratio = 0.05, tip_shape = StealthTip, stroke_opacity = 0.5, fill_opacity = 0.5, stroke_width= DEFAULT_STROKE_WIDTH*0.66) 
             self.play(Create(vect), run_time = run_time/8)
             self.play(
                 Create(arc),
                 Rotate(vect, angle, about_point = center),
                 run_time = run_time*6/8
             )
-            self.play(Uncreate(vect), run_time = run_time/8)
+            self.play(FadeOut(vect), run_time = run_time/8)
         else:
             self.play(Create(arc), run_time = run_time)
     
