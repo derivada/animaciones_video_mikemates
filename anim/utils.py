@@ -26,3 +26,33 @@ def trazar_arco(scene: Scene, arc: Arc, run_time = 2.0, show_vect = True):
         scene.play(FadeOut(vect), run_time = run_time/8)
     else:
         scene.play(Create(arc), run_time = run_time)
+
+def write_paragraph(lines, line_spacing: int = 0.2, paragraph_dot: bool = True, all_dots: bool = False, **kwargs) -> VGroup:
+    # lines es un array de strings, admite argumentos adicionales del constructor de Text()
+    # devuelve el objeto de texto en forma de VGroup
+    text = VGroup()
+    for line in lines:
+        text_line = Text(line, **kwargs)
+        if text: # lineas normales
+            text_line.next_to(text[-1], DOWN, aligned_edge=LEFT, buff=line_spacing)
+            if(all_dots): 
+                text.add(Dot().next_to(text_line, LEFT)) 
+        elif(paragraph_dot | all_dots): # primera linea y queremos paragraph dot
+            text.add(Dot().next_to(text_line, LEFT)) 
+        text.add(text_line)
+    return text
+
+def write_tex_paragraph(lines, line_spacing: int = 0.2, paragraph_dot: bool = True, all_dots: bool = False, **kwargs) -> VGroup:
+    # lines es un array de strings, admite argumentos adicionales del constructor de Tex()
+    # devuelve el objeto de texto en forma de VGroup
+    text = VGroup()
+    for line in lines:
+        text_line = Tex(line, **kwargs)
+        if text: # lineas normales
+            text_line.next_to(text[-1], DOWN, aligned_edge=LEFT, buff=line_spacing)
+            if(all_dots): 
+                text.add(Dot().next_to(text_line, LEFT)) 
+        elif(paragraph_dot | all_dots): # primera linea y queremos paragraph dot
+            text.add(Dot().next_to(text_line, LEFT)) 
+        text.add(text_line)
+    return text
