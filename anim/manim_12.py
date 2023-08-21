@@ -3,7 +3,7 @@ from numpy import *
 from utils import *
 
 fs = 32
-# Sección 4.9
+# Sección 5.1
 class manim_12(Scene):
     def construct(self):        
         # dibujar polinomios
