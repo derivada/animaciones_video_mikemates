@@ -1,7 +1,7 @@
 from manim import *
 from numpy import *
 
-def mostrar_grid(scene: Scene):
+def mostrar_grid(scene: Scene) -> NumberPlane:
     grid = NumberPlane(
         background_line_style={
             "stroke_color": GRAY_B,
@@ -11,6 +11,7 @@ def mostrar_grid(scene: Scene):
         axis_config={"include_numbers": True}
     )
     scene.add(grid)
+    return grid
 
 def trazar_arco(scene: Scene, arc: Arc, run_time = 2.0, show_vect = True):
     center, radius, start_angle, angle, color = arc.arc_center, arc.radius, arc.start_angle, arc.angle, arc.color
