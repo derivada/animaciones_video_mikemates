@@ -8,8 +8,28 @@ fs = 40
 # Sección 3.1
 class manim_02(Scene):
     def construct(self):
-        circle = Circle(radius = 1.0, color = circle_color)
-        self.play(Create(circle))
+
+        circle = RegularPolygon(3, color = circle_color)
+        self.play(Create(circle), run_time = 2)
+        self.wait(2)
+        for i in range(4, 10):
+            circle_new = RegularPolygon(i, color = circle_color)
+            self.remove(circle)
+            if not i%6: circle_new.rotate(PI/i)
+            self.add(circle_new)
+            circle = circle_new
+            self.wait(1.5/i)
+
+        for i in range(10, 100, 2):
+            circle_new = RegularPolygon(i, color = circle_color)
+            self.remove(circle)
+            if not i%2: circle_new.rotate(PI/2)
+            self.add(circle_new)
+            circle = circle_new   
+            self.wait(1.5/i)
+
+             
+        self.play(Indicate(circle, color = YELLOW), run_time = 2)
         self.wait(2)
         
         circle_text = Tex(r"$\infty$ lados", font_size = fs, color = circle_color).shift([-2.5, -2.0, 0.0])
