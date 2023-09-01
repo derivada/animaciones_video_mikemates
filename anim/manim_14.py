@@ -11,6 +11,16 @@ class manim_14(Scene):
         euler_eq = Tex(r"$e^{i \pi} - 1 = 0$", font_size = fs*1.5, color = GRAY_B).shift(eq_pos)
         self.play(DrawBorderThenFill(euler_eq))
         self.wait(3)
+
+        i = Tex(r"$i = \sqrt{-1}$", font_size = fs, color = RED).next_to(euler_eq, DOWN)
+        pi = Tex(r"$\pi$", font_size = fs, color = YELLOW).next_to(i, RIGHT)
+        e = Tex(r"$e$", font_size = fs, color = GREEN).next_to(pi, RIGHT)
+        n_1 = Tex(r"$1$", font_size = fs, color = BLUE).next_to(e, RIGHT)
+        n_0 = Tex(r"$0$", font_size = fs, color = PURPLE).next_to(n_1, RIGHT)
+        self.play(FadeIn(i), FadeIn(pi), FadeIn(e), FadeIn(n_1), FadeIn(n_0), run_time = 2)
+        self.wait(3)
+
+
         poly_eq = Tex(r"$z - 1 = 0$", font_size = fs*1.5, color = GRAY_B).shift(eq_pos)
         poly_root_1 = Tex(r"Tiene a", font_size = fs)
         poly_root_2 = Tex(r"$e^{i \pi}$", font_size = fs, color = BLUE)
