@@ -13,6 +13,7 @@ class manim_14_2(Scene):
         bullet_2 = Tex(r"2) ", font_size = fs*0.75, color = BLUE).next_to(bullet_1, DOWN*1.5)
         fact_2 = Tex(r"$e^{i \pi}$ es trascendental", font_size = fs*0.75, color = GRAY_B).next_to(bullet_2, RIGHT).shift([0, 0.05, 0])
 
+        # Lines of the rectangle
         v_line = Line([0, 4, 0], [0, 1.1, 0]).shift([-1, 0, 0]).set_color(BLUE)
         h_line = Line([-11, 1.1, 0], [-1, 1.1, 0]).set_color(BLUE)
 
@@ -33,6 +34,7 @@ class manim_14_2(Scene):
         self.play(Write(sup))
         self.wait()
 
+        # Suppositions
         imply = Tex(r"$\Longrightarrow$", font_size = fs * 2.25).rotate(-PI/2 - PI/4).next_to(sup, DOWN)
         pol_1 = MathTex(r"\exists\, f(z) = a_nz^n + a_{n-1}z^{n-1} + ... + a_1z + a_0", font_size = fs)
         pol_2_1 = MathTex(r"\text{con }", font_size = fs).next_to(pol_1, DOWN)
@@ -47,6 +49,7 @@ class manim_14_2(Scene):
         self.play(Write(pol_3))
         self.wait()
 
+        # Move suppositions to legend
         pol = VGroup(pol_1, pol_2, pol_3)
         sups = Tex(r"Suponemos que:", font_size = fs, color = ORANGE).shift([-5, 0.5, 0])
         v_line_2 = Line([0, 1.1, 0], [0, -1.8, 0]).shift([-1, 0, 0]).set_color(ORANGE)
@@ -62,9 +65,11 @@ class manim_14_2(Scene):
         )
         self.wait()
 
+        # Introduce g
         g = Tex(r"g(x) := f(ix)\,f(-ix)", font_size = fs*1.3).to_edge(UP).shift([3, 0, 0])
         self.play(Write(g))
 
+        # g has real coefficients
         g_real = Tex(r"g tiene coeficientes reales", font_size = fs).next_to(g, DOWN * 2)
         g_real_proof_1_1 = MathTex(r"\overline{g(x)} =")
         g_real_proof_1_2 = MathTex(r"\overline{f(ix)f(-ix)}").next_to(g_real_proof_1_1, RIGHT)
@@ -87,7 +92,7 @@ class manim_14_2(Scene):
         ))
         self.wait()
 
-
+        # g has rational coefficients
         f_rational = Tex(r"f tiene coeficientes racionales", font_size = fs).next_to(g_real, DOWN)
         statements = VGroup(g_real, f_rational)
         brace = Brace(Line(LEFT * 0.6, RIGHT * 0.6)).rotate(PI/2).next_to(statements, RIGHT)
@@ -106,6 +111,7 @@ class manim_14_2(Scene):
         self.play(g_rational.animate.shift([-0.5, 1.5, 0]))
         self.wait()
 
+        # i*pi is a root of g
         ipi_g = Tex(r"$i\pi$ es raíz de $g$", font_size = fs, color=WHITE).next_to(g_rational, DOWN * 3)
         ipi_g_proof_1_1 = MathTex(r"g(i\pi) ")
         ipi_g_proof_1_2 = MathTex(r"= f(i^2\pi)f(-i^2\pi)", font_size = fs).next_to(ipi_g_proof_1_1, RIGHT)
@@ -132,6 +138,7 @@ class manim_14_2(Scene):
         self.play(ipi_g.animate.shift([0, 0.5, 0]), FadeOut(ipi_g_proof_1_1), FadeOut(ipi_g_proof_4))
         self.wait()
 
+        # Conclusion: i*pi is algebraic
         g_no_nulo = Tex(r"g no es el polinomio nulo", font_size = fs, color = ORANGE).next_to(ipi_g, DOWN)
         statements = VGroup(g_rational, ipi_g, g_no_nulo)
         brace = Brace(Line(LEFT * 0.9, RIGHT * 0.9)).rotate(PI/2).next_to(statements, RIGHT)
@@ -143,6 +150,7 @@ class manim_14_2(Scene):
         self.play(Write(brace), Write(imply), Write(ipi_alg))
         self.wait()
 
+        # By facts in legend, we find a contradiction
         self.play(FadeOut(g_rational), FadeOut(ipi_g), FadeOut(g_no_nulo), FadeOut(brace), FadeOut(imply), FadeOut(g))
         fact_1_copy = fact_1.copy()
 
