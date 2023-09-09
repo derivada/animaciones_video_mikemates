@@ -60,3 +60,14 @@ class manim_02(Scene):
         self.play(poly.animate.become(RegularPolygon(13, color = PURPLE).shift([2.5, 0.0, 0.0])),
                 FadeOut(poly_text3),FadeIn(poly_text4))
         self.wait(2)
+
+        # parte 2 en 3.4
+        pointer_text_si = Text("SÍ", font = 'Arial', font_size = fs, color = GREEN).next_to(pointer_text, RIGHT).shift([0.0, 0.1, 0.0])
+        self.play(FadeIn(pointer_text_si))
+        self.wait(1)
+
+        poly_to_circle = DashedLine(start = [1.25, 0.0, 0.0], end = [-1.25, 0.0, 0.0], color = LIGHTER_GRAY).add_tip(ArrowTriangleTip(fill_opacity = 1, color = LIGHTER_GRAY, width = DEFAULT_ARROW_TIP_LENGTH/2.5))
+        quest = Text("???", font = 'Arial', font_size = fs-18, color = LIGHTER_GRAY).next_to(poly_to_circle, UP)
+
+        self.play(AnimationGroup(Create(poly_to_circle), DrawBorderThenFill(quest), lag_ratio = 0.5, run_time = 2))
+        self.wait(3)

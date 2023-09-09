@@ -66,13 +66,13 @@ class manim_03(Scene):
         self.play(DrawBorderThenFill(pitagoras), run_time = 2)
         self.play(FadeIn(pitagoras_geom))
         self.play(DrawBorderThenFill(pitagoras_eq), run_time = 2)
-        self.wait(3)
+        self.wait(1)
 
         # down-left corner of the construction triangle
         constr_corner = [-3.5, -2.0, 0.0]
         # first 2
         self.play(triang_group[0].animate.next_to(constr_corner, UL, buff = 0), triang_group[1].animate.next_to(constr_corner, DR, buff = 0), run_time = 2)
-        self.wait(2)
+        self.wait(0.5)
         right_p, up_p = triang_group[1].get_boundary_point(UR), triang_group[0].get_boundary_point(UR)
         triangle_add_2 = Polygon(right_p, constr_corner, up_p, color = YELLOW_B, fill_opacity = 0.5, stroke_width = 0)
         self.play(FadeIn(triangle_add_2))
@@ -80,46 +80,46 @@ class manim_03(Scene):
         perp = [-hyp[1], hyp[0], 0.0]
         square_add_2 = Polygon(right_p, up_p, up_p + perp, right_p + perp, color = BLUE_B, fill_opacity = 0.5, stroke_width = 0)
         self.play(FadeIn(square_add_2))
-        self.wait(2)
+        self.wait(0.5)
         self.play(AnimationGroup(
                     square_add_2.animate.rotate(angle = arctan((np.linalg.norm(up_p - constr_corner)) / np.linalg.norm((constr_corner - right_p))), about_point = right_p),
                     FadeOut(triang_group[0]), FadeOut(triang_group[1]), FadeOut(triangle_add_2), lag_ratio = 0.2, run_time = 2))
         
         # next 2
-        self.play(square_add_2.animate.next_to(constr_corner, UL, buff = 0), triang_group[2].animate.next_to(constr_corner, DR, buff = 0), run_time = 2)
-        self.wait(2)
+        self.play(square_add_2.animate.next_to(constr_corner, UL, buff = 0), triang_group[2].animate.next_to(constr_corner, DR, buff = 0), run_time = 0.5)
+        self.wait(0.25)
         right_p, up_p = triang_group[2].get_boundary_point(UR), square_add_2.get_boundary_point(UR)
         triangle_add_3 = Polygon(right_p, constr_corner, up_p, color = YELLOW_C, fill_opacity = 0.5, stroke_width = 0)
-        self.play(FadeIn(triangle_add_3))
+        self.play(FadeIn(triangle_add_3), run_time = 0.25)
         hyp = right_p - up_p
         perp = [-hyp[1], hyp[0], 0.0]
         square_add_3 = Polygon(right_p, up_p, up_p + perp, right_p + perp, color = BLUE_C, fill_opacity = 0.5, stroke_width = 0)
-        self.play(FadeIn(square_add_3))
-        self.wait(2)
+        self.play(FadeIn(square_add_3), run_time = 0.25)
+        self.wait(0.25)
         self.play(AnimationGroup(
                     square_add_3.animate.rotate(angle = arctan((np.linalg.norm(up_p - constr_corner)) / np.linalg.norm((constr_corner - right_p))), about_point = right_p),
-                    FadeOut(square_add_2), FadeOut(triang_group[2]), FadeOut(triangle_add_3), lag_ratio = 0.2, run_time = 2))
-        self.wait(2)
+                    FadeOut(square_add_2), FadeOut(triang_group[2]), FadeOut(triangle_add_3), lag_ratio = 0.2, run_time = 0.5))
+        self.wait(0.25)
 
         # last 2
-        self.play(square_add_3.animate.next_to(constr_corner, UL, buff = 0), triang_group[3].animate.next_to(constr_corner, DR, buff = 0), run_time = 2)
-        self.wait(2)
+        self.play(square_add_3.animate.next_to(constr_corner, UL, buff = 0), triang_group[3].animate.next_to(constr_corner, DR, buff = 0), run_time = 0.5)
+        self.wait(0.25)
         right_p, up_p = triang_group[3].get_boundary_point(UR), square_add_3.get_boundary_point(UR)
         triangle_add_4 = Polygon(right_p, constr_corner, up_p, color = YELLOW_D, fill_opacity = 0.5, stroke_width = 0)
-        self.play(FadeIn(triangle_add_4))
+        self.play(FadeIn(triangle_add_4), run_time = 0.25)
         hyp = right_p - up_p
         perp = [-hyp[1], hyp[0], 0.0]
         square_add_4 = Polygon(right_p, up_p, up_p + perp, right_p + perp, color = BLUE_D, fill_opacity = 0.5, stroke_width = 0)
-        self.play(FadeIn(square_add_4))
-        self.wait(2)
+        self.play(FadeIn(square_add_4), run_time = 0.25)
+        self.wait(0.25)
         self.play(AnimationGroup(
                     square_add_4.animate.rotate(angle = arctan((np.linalg.norm(up_p - constr_corner)) / np.linalg.norm((constr_corner - right_p))), about_point = right_p),
-                    FadeOut(square_add_3), FadeOut(triang_group[3]), FadeOut(triangle_add_4), lag_ratio = 0.2, run_time = 2))
-        self.wait(2)
+                    FadeOut(square_add_3), FadeOut(triang_group[3]), FadeOut(triangle_add_4), lag_ratio = 0.2, run_time = 0.5))
+        self.wait(0.25)
 
         # done
         poly = Polygon(*poly_points, color = BLUE_D, fill_opacity = 0.5, stroke_width = 0).move_to([3.0, 0.0, 0.0]).scale(0.5)
         equal = Tex("=", font_size = fs*1.75)
-        self.play(AnimationGroup(FadeOut(pitagoras), FadeOut(pitagoras_geom), FadeOut(pitagoras_eq), lag_ratio = 0.2, run_time = 1))
-        self.play(AnimationGroup(square_add_4.animate.move_to([-3.0, 0.0, 0.0]), FadeIn(poly), FadeIn(equal), lag_ratio = 0.8, run_time = 3))
+        self.play(AnimationGroup(FadeOut(pitagoras), FadeOut(pitagoras_geom), FadeOut(pitagoras_eq), lag_ratio = 0.2, run_time = 0.25))
+        self.play(AnimationGroup(square_add_4.animate.move_to([-3.0, 0.0, 0.0]), FadeIn(poly), FadeIn(equal), lag_ratio = 0.8, run_time = 1))
         self.wait(3)
