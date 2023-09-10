@@ -13,7 +13,7 @@ class manim_09(Scene):
         pA_coords, pB_coords, pmid_coords, psqrtA_coords = [3.0, 0.0, 0.0], [-1.0, 0.0, 0.0], [1.0, 0.0, 0.0], [0.0, sqrt(3), 0.0]
         p0, pA, pB, psqrtA = Dot(ORIGIN), Dot(pA_coords, color = color_A), Dot(pB_coords, color = color_B), Dot(psqrtA_coords, color = color_sqrtA)
         p0_label = Tex("O", color = LIGHT_GRAY, font_size = fs).next_to(p0, DL/2)
-        self.add(p0, p0_label)
+        self.play(FadeIn(p0), FadeIn(p0_label))
         pA_label = Tex("A", color = color_A, font_size = fs).next_to(pA, DL/2)
         pB_label = Tex("B", color = color_B, font_size = fs).next_to(pB, DL/2)
         psqrtA_label = Tex("C", color = color_sqrtA, font_size = fs).next_to(psqrtA_coords, LEFT) # nombre temporal C, se cambia luego
@@ -56,4 +56,4 @@ class manim_09(Scene):
         # done
         self.play(Transform(psqrtA_label, Tex(r"$\sqrt{3}$", color = color_B, font_size = fs).next_to(psqrtA_coords, LEFT)), run_time = 2)
         self.play(Indicate(psqrtA_label))
-        self.wait(3)
+        self.wait(6)

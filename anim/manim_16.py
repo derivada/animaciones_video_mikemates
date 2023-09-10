@@ -115,5 +115,17 @@ class manim_16(Scene):
             FadeIn(tras_irrationals_box)
         )
         self.wait(2)
-
+        quest = Tex("?", font_size = fs*1.25).move_to(tras_irrationals_box.get_center()).shift(DOWN/2)
+        self.play(Write(quest), run_time = 1.5)
+        self.wait(3)
+        n_e = Tex("$e^a$", font_size = fs).next_to(irrationals_text, LEFT*2.75 + UP)
+        n_e_alg = Tex("(a algebraico)", font_size = fs*0.66).next_to(n_e, RIGHT).align_to(n_e, DOWN)
+        n_pi_quest = Tex("¿$\pi$?", font_size = fs*1.25).next_to(irrationals_text, DOWN*1.5+RIGHT*0.2)
+        n_e_line = VGroup(n_e, n_e_alg)
+        n_liou = Tex("$L_b$", font_size = fs).next_to(n_pi_quest, LEFT*2 + DOWN * 0.6)
+        self.play(AnimationGroup(FadeOut(quest), Write(n_e_line), Write(n_liou), Write(n_pi_quest), lag_ratio = 0.5, run_time = 2.5))
+        self.wait(1)
+        self.play(Indicate(n_pi_quest, color = BLUE_D), run_time = 2)
+        self.wait(3)
+        
 

@@ -20,3 +20,5 @@ class manim_07(Scene):
         line_ext = Line(pB_coords, [3.0, 0.0, 0.0], buff = DEFAULT_DOT_RADIUS, color = RED)
         self.play(AnimationGroup(Create(line_ext), FadeIn(pE), FadeIn(pE_label), FadeOut(arc), lag_ratio = 0.2, run_time = 1))
         self.wait(3)
+        self.play(Uncreate(line_ab), Uncreate(line_cd), Uncreate(line_ext), FadeOut(pA), FadeOut(pA_label), FadeOut(pB), FadeOut(pB_label), FadeOut(pC), FadeOut(pC_label), FadeOut(pD), FadeOut(pD_label), FadeOut(pE), FadeOut(pE_label), run_time = 2)
+        self.wait(3)

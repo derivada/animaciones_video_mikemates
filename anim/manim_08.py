@@ -13,7 +13,7 @@ class manim_08(Scene):
         mostrar_grid(self)
         pA_coords, pB_coords, pAB_coords, p1_coords = [3.0, 0.0, 0.0], [sqrt(2), sqrt(2), 0.0], [6.0, 0.0, 0.0], [sqrt(2)/2, sqrt(2)/2, 0.0]
         p0, p1, pA, pB, pAB = Dot(ORIGIN), Dot(p1_coords), Dot(pA_coords, color = color_A), Dot(pB_coords, color = color_B), Dot(pAB_coords, color = color_AB)
-        self.add(p0)
+        self.play(FadeIn(p0))
         pA_label = Tex("A", color = color_A, font_size = fs).next_to(pA, DR/2)
         pB_label = Tex("B", color = color_B, font_size = fs).next_to(pB, DR/2)
         pAB_label = Tex("AB", color = color_AB, font_size = fs).next_to(pAB, DR/2)
@@ -41,3 +41,6 @@ class manim_08(Scene):
         self.play(FadeIn(pAB_label))
         self.play(Indicate(pAB), Indicate(pAB_label))
         self.wait(3)
+
+        self.play(Uncreate(line_a), Uncreate(line_b), Uncreate(line_bab), Uncreate(line_1a), Uncreate(arc_1))
+        self.play(FadeOut(p0), FadeOut(p1), FadeOut(pA), FadeOut(pB), FadeOut(pAB), FadeOut(pA_label), FadeOut(pB_label), FadeOut(pAB_label), FadeOut(proportion_eq))

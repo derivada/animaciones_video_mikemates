@@ -34,13 +34,10 @@ class manim_10(Scene):
         ]
         set_elements = write_tex_paragraph(set_elements_lines, all_dots = True, font_size = fs, tex_template = TexTemplate().add_to_preamble(r"\usepackage{amssymb}")).next_to(constr_set, DOWN).align_to(constr_def, LEFT).shift(RIGHT/2)
         
-        iter_lines = ["Importante: Podemos repetir varias veces el proceso de tomar raíces cuadradas,", 
-                      "sumar, restar, multiplicar o dividir cualquier número construible!"]
-        iter_text = write_paragraph(iter_lines, font_size = fs,  t2c={'repetir varias veces': BLUE}, font='Arial').shift(UP*2)
 
-        iter_ex_lines = [r"Por ejemplo: $\sqrt{\sqrt{\sqrt{3} + \sqrt{\sqrt{2}}}}$ también es construible"]
-        iter_ex = write_tex_paragraph(iter_ex_lines, paragraph_dot = False, font_size = fs*1.25, tex_template = TexTemplate().add_to_preamble(r"\usepackage{amssymb}"))
-
+        iter_ex_lines = [r"$\sqrt{\sqrt{\sqrt{3} + \sqrt{\sqrt{2}}}}$"]
+        iter_ex = write_tex_paragraph(iter_ex_lines, paragraph_dot = False, font_size = fs*1.75, tex_template = TexTemplate().add_to_preamble(r"\usepackage{amssymb}"))
+        iter_ex.shift(UP)
         # animaciones
         self.play(Write(constr_def), run_time = 3)
         self.play(FadeIn(segment_group))
@@ -54,8 +51,6 @@ class manim_10(Scene):
         #self.play(AnimationGroup(*[FadeIn(line) for line in set_elements.submobjects]), lag_ratio = 0.2, run_time = 9) 
         self.wait(6)
         self.play(AnimationGroup(FadeOut(constr_def), FadeOut(segment_group), FadeOut(constr_set), FadeOut(set_elements), lag_ratio = 0.2, run_time = 3))
-
-        self.play(Write(iter_text), run_time = 3)
         self.wait(3)
         self.play(Write(iter_ex), run_time = 3)
         self.wait(3)
