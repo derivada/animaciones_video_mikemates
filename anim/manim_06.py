@@ -47,9 +47,16 @@ class manim_06(Scene):
         self.play(FadeIn(dots))
 
         # extender eje vertical
+        minus1_dot = Dot([-3.0, 0.0, 0.0], color = point_color)
+        minus1_label = Tex("-1", font_size = fs, color = point_color).next_to(minus1_dot, DL/2)
+        minus1 = VGroup(minus1_dot, minus1_label)
+        minus2_dot = Dot([-5.0, 0.0, 0.0], color = point_color)
+        minus2_label = Tex("-2", font_size = fs, color = point_color).next_to(minus2_dot, DL/2)
+        minus2 = VGroup(minus2_dot, minus2_label)
+        left_dots =  Tex("...", font_size = fs, color = point_color).move_to([-6.0, -0.4, 0.0])
         line_up = Line(pA_coords, [-1.0, 10.0, 0.0], buff = DEFAULT_DOT_RADIUS)
         line_down = Line(pA_coords, [-1.0, -10.0, 0.0], buff = DEFAULT_DOT_RADIUS)
-        self.play(Create(line_up), Create(line_down))
+        self.play(Create(line_up), Create(line_down), FadeIn(minus1), FadeIn(minus2), FadeIn(left_dots))
         self.wait(2)
 
         # cuadricula
