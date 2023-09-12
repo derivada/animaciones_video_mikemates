@@ -62,4 +62,4 @@ class manim_08(Scene):
         self.wait()
 
         self.play(Uncreate(line_a), Uncreate(line_b), Uncreate(line_bab), Uncreate(line_1a), Uncreate(arc_1), Uncreate(line_ab))
-        self.play(FadeOut(p0), FadeOut(p1), FadeOut(pA), FadeOut(pB), FadeOut(pAB), FadeOut(pA_label), FadeOut(pB_label), FadeOut(pAB_label), FadeOut(proportion_eq))
+        self.play(FadeOut(p0), FadeOut(p1), FadeOut(pA), FadeOut(pB), FadeOut(pAB), FadeOut(p1_label), FadeOut(pA_label), FadeOut(pB_label), FadeOut(pAB_label), FadeOut(proportion_eq), FadeOut(measure_a), FadeOut(measure_b), FadeOut(measure_ab), FadeOut(proportion_real))
